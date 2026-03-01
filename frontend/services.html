@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - CarWash Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <span class="brand">🚿 CarWash Manager</span>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="clients.html">Clientes</a>
+            <a href="vehicles.html">Vehículos</a>
+            <a href="services.html" class="active">Servicios</a>
+            <a href="orders.html">Órdenes</a>
+            <a href="employees.html">Empleados</a>
+            <a href="reports.html">Reportes</a>
+        </div>
+        <div class="nav-actions">
+            <button id="logoutBtn" class="btn btn-logout">Cerrar Sesión</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <div>
+                <h2>Servicios</h2>
+                <p>Catálogo de servicios de lavado</p>
+            </div>
+            <button class="btn btn-primary" onclick="openModal()">+ Nuevo Servicio</button>
+        </div>
+
+        <div class="grid-container" id="serviceList"></div>
+    </div>
+
+    <!-- Modal -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Nuevo Servicio</h2>
+            <form id="serviceForm">
+                <input type="hidden" id="serviceId">
+                <div class="form-group">
+                    <label for="serviceName">Nombre del Servicio</label>
+                    <input type="text" id="serviceName" placeholder="Ej: Lavado Completo" required>
+                </div>
+                <div class="form-group">
+                    <label for="serviceDescription">Descripción</label>
+                    <textarea id="serviceDescription" placeholder="Descripción del servicio" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="servicePrice">Precio ($)</label>
+                    <input type="number" id="servicePrice" placeholder="0" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+            </form>
+        </div>
+    </div>
+    <script src="js/services.js"></script>
+</body>
+
+</html>

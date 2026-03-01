@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleados - CarWash Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <span class="brand">🚿 CarWash Manager</span>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="clients.html">Clientes</a>
+            <a href="vehicles.html">Vehículos</a>
+            <a href="services.html">Servicios</a>
+            <a href="orders.html">Órdenes</a>
+            <a href="employees.html" class="active">Empleados</a>
+            <a href="reports.html">Reportes</a>
+        </div>
+        <div class="nav-actions">
+            <button id="logoutBtn" class="btn btn-logout">Cerrar Sesión</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <div>
+                <h2>Empleados</h2>
+                <p>Gestión del personal del lavadero</p>
+            </div>
+            <button class="btn btn-primary" onclick="openModal()">+ Nuevo Empleado</button>
+        </div>
+
+        <div class="grid-container" id="employeeList"></div>
+    </div>
+
+    <!-- Modal -->
+    <div id="employeeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Nuevo Empleado</h2>
+            <form id="employeeForm">
+                <input type="hidden" id="employeeId">
+                <div class="form-group">
+                    <label for="employeeName">Nombre</label>
+                    <input type="text" id="employeeName" placeholder="Nombre completo" required>
+                </div>
+                <div class="form-group">
+                    <label for="employeeRole">Cargo</label>
+                    <select id="employeeRole" required>
+                        <option value="">Seleccione un cargo</option>
+                        <option value="Lavador">Lavador</option>
+                        <option value="Supervisor">Supervisor</option>
+                        <option value="Recepcionista">Recepcionista</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="employeePhone">Teléfono</label>
+                    <input type="text" id="employeePhone" placeholder="Número de teléfono">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+            </form>
+        </div>
+    </div>
+    <script src="js/employees.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes - CarWash Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <span class="brand">🚿 CarWash Manager</span>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="clients.html">Clientes</a>
+            <a href="vehicles.html">Vehículos</a>
+            <a href="services.html">Servicios</a>
+            <a href="orders.html">Órdenes</a>
+            <a href="employees.html">Empleados</a>
+            <a href="reports.html" class="active">Reportes</a>
+        </div>
+        <div class="nav-actions">
+            <button id="logoutBtn" class="btn btn-logout">Cerrar Sesión</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <div>
+                <h2>Reportes y Operaciones Batch</h2>
+                <p>Estadísticas del lavadero y generación de órdenes en lote</p>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon green">💰</div>
+                <div class="stat-value" id="totalRevenue">$0</div>
+                <div class="stat-label">Ingresos Totales</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon blue">✅</div>
+                <div class="stat-value" id="completedOrders">0</div>
+                <div class="stat-label">Órdenes Completadas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon orange">⏳</div>
+                <div class="stat-value" id="pendingOrders">0</div>
+                <div class="stat-label">Órdenes Pendientes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon purple">🔄</div>
+                <div class="stat-value" id="inProgressOrders">0</div>
+                <div class="stat-label">En Progreso</div>
+            </div>
+        </div>
+
+        <!-- Batch Order Creation -->
+        <div class="section">
+            <h3 class="section-title">🚀 Generación Batch de Órdenes (Promise.all)</h3>
+            <p style="color:var(--text-muted);margin-bottom:1rem;font-size:0.875rem;">
+                Seleccione vehículos, un servicio y un empleado para generar múltiples órdenes simultáneamente usando
+                <strong>Promise.all</strong>.
+            </p>
+            <div class="card" style="padding:2rem;">
+                <div class="form-group">
+                    <label for="batchService">Servicio</label>
+                    <select id="batchService" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="batchEmployee">Empleado</label>
+                    <select id="batchEmployee" required></select>
+                </div>
+                <div class="form-group">
+                    <label>Vehículos (seleccione múltiples)</label>
+                    <div id="vehicleCheckboxes"
+                        style="max-height:200px;overflow-y:auto;padding:0.5rem;border:1px solid var(--border-color);border-radius:0.75rem;background:var(--background-color);">
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="generateBatchBtn" onclick="generateBatchOrders()">
+                    🚀 Generar Órdenes en Lote
+                </button>
+                <div id="batchResult" style="margin-top:1rem;"></div>
+            </div>
+        </div>
+
+        <!-- Orders by Status -->
+        <div class="section">
+            <h3 class="section-title">📊 Órdenes por Estado</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Vehículo</th>
+                            <th>Servicio</th>
+                            <th>Empleado</th>
+                            <th>Estado</th>
+                            <th>Precio</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="allOrders"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="js/reports.js"></script>
+</body>
+
+</html>

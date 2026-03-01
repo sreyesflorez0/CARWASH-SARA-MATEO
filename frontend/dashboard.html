@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CarWash Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <span class="brand">🚿 CarWash Manager</span>
+        <div class="nav-links">
+            <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="clients.html">Clientes</a>
+            <a href="vehicles.html">Vehículos</a>
+            <a href="services.html">Servicios</a>
+            <a href="orders.html">Órdenes</a>
+            <a href="employees.html">Empleados</a>
+            <a href="reports.html">Reportes</a>
+        </div>
+        <div class="nav-actions">
+            <button id="logoutBtn" class="btn btn-logout">Cerrar Sesión</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <div>
+                <h2>Dashboard</h2>
+                <p>Resumen general del lavadero</p>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon blue">👥</div>
+                <div class="stat-value" id="totalClients">0</div>
+                <div class="stat-label">Clientes Registrados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon purple">🚗</div>
+                <div class="stat-value" id="totalVehicles">0</div>
+                <div class="stat-label">Vehículos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon green">📋</div>
+                <div class="stat-value" id="totalOrders">0</div>
+                <div class="stat-label">Órdenes Totales</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon orange">⏳</div>
+                <div class="stat-value" id="pendingOrders">0</div>
+                <div class="stat-label">Órdenes Pendientes</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">📋 Últimas Órdenes</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Vehículo</th>
+                            <th>Servicio</th>
+                            <th>Empleado</th>
+                            <th>Estado</th>
+                            <th>Precio</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentOrders">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

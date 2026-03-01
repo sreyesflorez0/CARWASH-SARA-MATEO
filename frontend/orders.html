@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Órdenes - CarWash Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <span class="brand">🚿 CarWash Manager</span>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="clients.html">Clientes</a>
+            <a href="vehicles.html">Vehículos</a>
+            <a href="services.html">Servicios</a>
+            <a href="orders.html" class="active">Órdenes</a>
+            <a href="employees.html">Empleados</a>
+            <a href="reports.html">Reportes</a>
+        </div>
+        <div class="nav-actions">
+            <button id="logoutBtn" class="btn btn-logout">Cerrar Sesión</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <div>
+                <h2>Órdenes de Lavado</h2>
+                <p>Gestión de órdenes de lavado</p>
+            </div>
+            <button class="btn btn-primary" onclick="openModal()">+ Nueva Orden</button>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Vehículo</th>
+                        <th>Servicio</th>
+                        <th>Empleado</th>
+                        <th>Estado</th>
+                        <th>Precio</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="orderList"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Nueva Orden</h2>
+            <form id="orderForm">
+                <input type="hidden" id="orderId">
+                <div class="form-group">
+                    <label for="orderVehicle">Vehículo</label>
+                    <select id="orderVehicle" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="orderService">Servicio</label>
+                    <select id="orderService" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="orderEmployee">Empleado</label>
+                    <select id="orderEmployee" required></select>
+                </div>
+                <div class="form-group" id="statusGroup" style="display:none;">
+                    <label for="orderStatus">Estado</label>
+                    <select id="orderStatus">
+                        <option value="pending">Pendiente</option>
+                        <option value="in_progress">En Progreso</option>
+                        <option value="completed">Completado</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+            </form>
+        </div>
+    </div>
+    <script src="js/orders.js"></script>
+</body>
+
+</html>
