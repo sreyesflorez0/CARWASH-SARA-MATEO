@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:15
+    container_name: carwash_db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: carwash_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U admin -d carwash_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: carwash_app
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      DB_HOST: db
+      DB_USER: admin
+      DB_PASSWORD: password
+      DB_NAME: carwash_db
+      JWT_SECRET: supersecretkey
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
