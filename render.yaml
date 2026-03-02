@@ -1,0 +1,29 @@
+databases:
+  - name: carwash-db
+    plan: free
+    databaseName: carwash_db
+    user: admin
+
+services:
+  - type: web
+    name: carwash-app
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: carwash-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SEED_DB
+        value: "true"
+      - key: CORS_ORIGIN
+        fromService:
+          type: web
+          name: carwash-app
+          envVarKey: RENDER_EXTERNAL_URL

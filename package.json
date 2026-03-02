@@ -4,7 +4,7 @@
   "description": "Car wash management system",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "node dist/sync.js && node dist/index.js",
     "build": "tsc",
     "dev": "ts-node src/sync.ts && nodemon src/index.ts",
     "sync": "ts-node src/sync.ts"
