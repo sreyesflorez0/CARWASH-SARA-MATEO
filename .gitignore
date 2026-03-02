@@ -17,6 +17,9 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 
+# Docker (local only)
+docker-compose.yml
+
 # IDE / Editor
 .vscode/
 .idea/

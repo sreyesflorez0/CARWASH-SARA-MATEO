@@ -5,9 +5,23 @@ import path from 'path';
 const app = express();
 const port = process.env.PORT || 3000;
 
-// CORS configured only for http://localhost:3000, methods GET POST PUT DELETE
+// Secure CORS configuration
+const allowedOrigins = [
+    process.env.CORS_ORIGIN, // Production URL (from Render env vars)
+    'http://localhost:3000', // Local development
+    'http://127.0.0.1:3000'
+].filter(Boolean); // Remove undefined
+
 app.use(cors({
-    origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        // or requests that match our allowed origins
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 app.use(express.json());

@@ -13,4 +13,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Run sync script to create tables, then start the server
-CMD ["sh", "-c", "npx ts-node src/sync.ts && node dist/index.js"]
+CMD ["sh", "-c", "node dist/sync.js && node dist/index.js"]
